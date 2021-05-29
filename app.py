@@ -2,36 +2,39 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
-import datetime
 
 app = dash.Dash(__name__, assets_url_path='assets/')
-app.layout = html.Div([
-    html.Div(
-        id='images_upload_container',
-        children=[
-            dcc.Upload(
-                id='upload-image',
-                children=html.Div([
-                    'Drag and Drop or ',
-                    html.A('Select Files')
-                ]),
-                multiple=True
-            ),
-            html.Div(id='output-image-upload')],
-    ),
+app.layout = html.Div(
+    id='app-container',
+    className='child',
+    children=[
+        html.Div(
+            id='images_upload_container',
+            children=[
+                dcc.Upload(
+                    id='upload-image',
+                    children=html.Div([
+                        'Drag and Drop or ',
+                        html.A('Select Files')
+                    ]),
+                    multiple=True
+                ),
+                html.Div(id='output-image-upload',
+                         children='')
+            ],
+        ),
 
-    html.Div(id='output-prediction'),
+        html.Div(id='output-prediction',
+                 children='ddddddddddddddddddddkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkddddddddddddddddddddddddddddddddddddddddd'),
 ])
 
 
-# For the image display
 def parse_contents(contents):
     return html.Div([
         html.Img(src=contents),
     ])
 
 
-# For the image display
 @app.callback(Output('output-image-upload', 'children'),
               Input('upload-image', 'contents'),
               State('upload-image', 'filename'),

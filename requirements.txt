@@ -1,0 +1,5 @@
+dash~=1.20.0
+numpy~=1.19.5
+tensorflow~=2.3.0
+tensorflow-gpu~=2.3.0
+matplotlib~=3.3.4
