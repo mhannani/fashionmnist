@@ -1,8 +1,6 @@
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras.utils import to_categorical
 
-from loaders import NUM_CLASSES
-
 
 def load_cifar_10():
     """"
@@ -20,7 +18,7 @@ def load_cifar_10():
     x_test = x_test.astype('float32') / 255.0
 
     # Change the label into one-hot-encoder vector
-    y_train = to_categorical(y_train, NUM_CLASSES)
-    y_test = to_categorical(y_test, NUM_CLASSES)
+    y_train = to_categorical(y_train, 10)
+    y_test = to_categorical(y_test, 10)
 
     return (x_train, y_train), (x_test, y_test)

@@ -2,6 +2,8 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
+from loaders import load_model
+from models import CifarModel
 
 app = dash.Dash(__name__, assets_url_path='assets/')
 app.layout = html.Div(
@@ -30,6 +32,7 @@ app.layout = html.Div(
 
 
 def parse_contents(contents):
+    load_model(CifarModel, 'cifar_model')
     return html.Div([
         html.Img(className='img', src=contents),
     ])

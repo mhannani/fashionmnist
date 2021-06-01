@@ -1,6 +1,7 @@
 from tensorflow.keras.layers import Input, Flatten, Dense
 from tensorflow.keras.layers import Conv2D, BatchNormalization, Dropout, LeakyReLU
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import ModelCheckpoint
 from tensorflow.keras.models import Model
 from tensorflow.keras.utils import plot_model
 from matplotlib import pyplot as plt
@@ -83,11 +84,14 @@ class CifarModel:
         self.model.compile(loss='categorical_crossentropy',
                            optimizer=optimizer, metrics=['accuracy'])
 
-    def train(self, x_train, y_train, epochs=10, batch_size=64, shuffle=True):
+    def train(self, x_train, y_train, location, epochs=10, batch_size=64, shuffle=True):
         """
         Train the model with training set.
         :return: None
         """
+        # Store the learned weights.
+        checkpoint2 = ModelCheckpoint(os.path.join(location, 'weights/weights.h5'),
+                                      save_weights_only=True, verbose=1)
         self.model.fit(x_train, y_train, batch_size, epochs, shuffle)
 
     def _plot_model(self, location):
