@@ -90,9 +90,8 @@ class CifarModel:
         :return: None
         """
         # Store the learned weights.
-        checkpoint2 = ModelCheckpoint(os.path.join(location, 'weights/weights.h5'),
-                                      save_weights_only=True, verbose=1)
-        self.model.fit(x_train, y_train, batch_size, epochs, shuffle)
+        checkpoint = ModelCheckpoint(os.path.join(location, 'weights/weights.h5'), save_weights_only=True, verbose=1)
+        self.model.fit(x_train, y_train, batch_size, epochs, shuffle, callbacks=checkpoint)
 
     def _plot_model(self, location):
         """
