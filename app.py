@@ -6,7 +6,6 @@ from dash.dependencies import Input, Output, State
 app = dash.Dash(__name__, assets_url_path='assets/')
 app.layout = html.Div(
     id='app-container',
-    className='child',
     children=[
         html.Div(
             id='images_upload_container',
@@ -19,19 +18,20 @@ app.layout = html.Div(
                     ]),
                     multiple=True
                 ),
-                html.Div(id='output-image-upload',
-                         children='')
             ],
         ),
+        html.Div(id='flex-container', children=[
+            html.Div(id='output-image-upload', className='flex-item', children=[html.H2('fffff')]),
+            html.Div(id='output-prediction', className='flex-item', children=[html.H2('ddddd')]),
+        ])
 
-        html.Div(id='output-prediction',
-                 children='ddddddddddddddddddddkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkddddddddddddddddddddddddddddddddddddddddd'),
+
 ])
 
 
 def parse_contents(contents):
     return html.Div([
-        html.Img(src=contents),
+        html.Img(className='img', src=contents),
     ])
 
 
