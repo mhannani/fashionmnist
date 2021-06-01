@@ -32,10 +32,12 @@ app.layout = html.Div(
 
 
 def parse_contents(contents):
-    load_model(CifarModel, 'cifar_model')
     return html.Div([
         html.Img(className='img', src=contents),
     ])
+
+
+model = load_model(CifarModel, 'cifar_model')
 
 
 @app.callback(Output('output-image-upload', 'children'),
@@ -47,6 +49,16 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         children = [
             parse_contents(c) for c in list_of_contents]
         return children
+
+
+@app.callback(Output('output-prediction', 'children'),
+              Input('upload-image', 'filename'))
+def prediction(image):
+    final_img = load_and_preprocess(image)
+    final_img = np_array_normalise(final_img)
+    Y = model.predict(final_img)
+    return Y
+
 
 
 if __name__ == '__main__':

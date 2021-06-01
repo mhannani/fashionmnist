@@ -20,6 +20,6 @@ def load_model(model_class, location):
     model = model_class(*params)
 
     # load weights
-    model.load_weights(os.path.join('models_info', location, 'weights/weights.h5'))
+    model.load_weights(os.path.join(location, 'weights/weights.h5'))
 
     return model
