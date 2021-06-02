@@ -4,6 +4,9 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 from loaders import load_model
 from models import CifarModel
+from utils import normalize_img
+import numpy as np
+from PIL import Image
 
 app = dash.Dash(__name__, assets_url_path='assets/')
 app.layout = html.Div(
@@ -51,14 +54,24 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         return children
 
 
+def load_and_preprocess(image):
+    image1 = Image.open(image)
+    rgb = Image.new('RGB', image1.size)
+    rgb.paste(image1)
+    image = rgb
+    test_image = image.resize((64, 64))
+    return test_image
+
+
 @app.callback(Output('output-prediction', 'children'),
               Input('upload-image', 'filename'))
-def prediction(image):
-    final_img = load_and_preprocess(image)
-    final_img = np_array_normalise(final_img)
-    Y = model.predict(final_img)
-    return Y
-
+def prediction(img):
+    if img is None:
+        raise dash.exceptions.PreventUpdate
+    img = load_and_preprocess(img)
+    scaled_img = normalize_img(img)
+    y = model.predict(scaled_img)
+    return y
 
 
 if __name__ == '__main__':
