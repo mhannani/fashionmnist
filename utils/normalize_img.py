@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def normalize_img(img):
     """
     Normalize the given images.
@@ -5,5 +8,5 @@ def normalize_img(img):
     :return: array_like
         Normalized image.
     """
-
+    img = np.array(img)
     return img.astype('float32') / 255.0
