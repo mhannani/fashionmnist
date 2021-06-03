@@ -1,6 +1,7 @@
 body {
   margin: 0 0;
   padding: 0 0;
+  background: #fcfcfd;
 }
 
 #app-container {
@@ -8,13 +9,13 @@ body {
 }
 
 #upload-image {
-  width: 50%;
-  height: 60px;
+  width: 30%;
+  height: 50px;
   padding: 10px 20px;
   background: antiquewhite;
-  line-height: 60px;
+  line-height: 50px;
   border-width: 1px;
-  border-style: dashed;
+  border-style: outset;
   border-radius: 5px;
   text-align: center;
   margin: 70px auto;
@@ -26,22 +27,42 @@ body {
   flex-flow: row wrap;
   justify-content: space-evenly;
 }
+#flex-container .componentWrapper .header {
+  position: absolute;
+  margin-top: -35px;
+  margin-left: 10px;
+  color: white;
+  background: #b0a3a3;
+  padding: 10px 20px;
+}
 
 .flex-item {
-  background: bisque;
+  text-align: center;
+  padding: 15px 15px;
   width: 30%;
-  height: 150px;
+  min-height: 200px;
   margin-top: 10px;
-  line-height: 150px;
   color: #000000;
-  border-width: 1px;
-  border-style: dashed;
-  border-radius: 5px;
+  border-width: 0.2px;
+  border-style: solid;
 }
 
 .img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.componentWrapper {
+  width: 40%;
+}
+
+.center_vertically {
+  line-height: 150px;
+}
+
+.image {
+  min-height: 120px;
+  min-width: 120px;
 }
 
 /*# sourceMappingURL=app.css.map */

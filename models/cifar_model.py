@@ -9,6 +9,7 @@ import os
 import numpy as np
 import pickle
 from utils import split_nbr
+import matplotlib.pyplot as plt
 
 
 class CifarModel:
@@ -203,6 +204,7 @@ class CifarModel:
             ax.text(0, -0.25, 'actual = ' + str(act_cls), ha='left', transform=ax.transAxes)
             ax.text(0, -0.35, 'predicted = ' + str(pred_cls), ha='left', transform=ax.transAxes, color=color)
             ax.imshow(x[i])
+            plt.imsave(f'generated_{act_cls}_{i}.png', x[i])
 
     def load_weights(self, location):
         """
