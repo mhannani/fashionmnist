@@ -115,6 +115,14 @@ class CifarModel:
 
         self.model.evaluate(x, y)
 
+    def predict(self, img):
+        """
+        Predict the class given an image.
+        :param img: array_like
+        :return: None
+        """
+        return self.model.predict(img, 1)
+
     def save(self, location):
         """
         Save the model alongside with its representation.

@@ -4,10 +4,12 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 from loaders import load_model
 from models import CifarModel
-from utils import normalize_img
 import numpy as np
+import os
 from PIL import Image
-
+import datetime
+import matplotlib.pyplot as plt
+image_directory = 'assets/images/'
 app = dash.Dash(__name__, assets_url_path='assets/')
 app.layout = html.Div(
     id='app-container',
@@ -26,41 +28,47 @@ app.layout = html.Div(
             ],
         ),
         html.Div(id='flex-container', children=[
-            html.Div(id='output-image-upload', className='flex-item', children=[html.H2('fffff')]),
+            html.Div(id='output-image-upload', className='flex-item'),
             html.Div(id='output-prediction', className='flex-item', children=[html.H2('ddddd')]),
         ])
-
-
-])
-
-
-def parse_contents(contents):
-    return html.Div([
-        html.Img(className='img', src=contents),
     ])
 
 
-model = load_model(CifarModel, 'cifar_model')
+def parse_contents(contents, filename):
+    return html.Div([
+        html.H5(filename),
+        html.Img(src=contents),
+    ])
 
 
 @app.callback(Output('output-image-upload', 'children'),
               Input('upload-image', 'contents'),
-              State('upload-image', 'filename'),
-              State('upload-image', 'last_modified'))
-def update_output(list_of_contents, list_of_names, list_of_dates):
+              State('upload-image', 'filename'))
+def update_output(list_of_contents, list_of_names):
     if list_of_contents is not None:
         children = [
-            parse_contents(c) for c in list_of_contents]
+            parse_contents(c, n) for c, n in
+            zip(list_of_contents, list_of_names)]
         return children
 
 
 def load_and_preprocess(image):
-    image1 = Image.open(image)
-    rgb = Image.new('RGB', image1.size)
-    rgb.paste(image1)
-    image = rgb
-    test_image = image.resize((64, 64))
-    return test_image
+    img = plt.imread(os.path.join(image_directory, image))
+    return img
+
+
+def normalize_img(img):
+    """
+    Normalize the given images.
+    :param img: array_like
+    :return: array_like
+        Normalized image.
+    """
+    img = np.array(img)
+    return img.astype('float32') / 255.0
+
+
+model = load_model(CifarModel, 'cifar_model')
 
 
 @app.callback(Output('output-prediction', 'children'),
@@ -68,9 +76,13 @@ def load_and_preprocess(image):
 def prediction(img):
     if img is None:
         raise dash.exceptions.PreventUpdate
-    img = load_and_preprocess(img)
-    scaled_img = normalize_img(img)
-    y = model.predict(scaled_img)
+    else:
+        print('prediction image')
+        print(img[0])
+        img = load_and_preprocess(img[0])
+        print(img.shape)
+        scaled_img = normalize_img(img)
+        y = model.predict(scaled_img[:, :, :3])
     return y
 
 
