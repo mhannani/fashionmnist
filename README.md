@@ -1,3 +1,3 @@
-# CIFAR Image classification using Tensorflow.
+# Dash plotly interface for image classification
 
-In this repository, we aim to provide a deep learning workflow to classify images in the CIFAR-10 dataset using Tensorflow. 
+### The ANN was trained on cifar_10 dataset with shape (None, 32, 32, 3), with None for the batch size.
