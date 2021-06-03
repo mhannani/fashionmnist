@@ -77,13 +77,21 @@ def prediction(img):
     if img is None:
         raise dash.exceptions.PreventUpdate
     else:
-        print('prediction image')
-        print(img[0])
         img = load_and_preprocess(img[0])
-        print(img.shape)
         scaled_img = normalize_img(img)
-        y = model.predict(scaled_img[:, :, :3])
-    return y
+        img = np.expand_dims(scaled_img, axis=0)
+        classes = np.array(['airplane', 'automobile', 'bird', 'cat', 'deer',
+                            'dog', 'frog', 'horse', 'ship', 'truck'])
+        y_preds = model.predict(img[:, :, :, :3])
+        print(img)
+        print(img.shape)
+        print('y_preds')
+        print(y_preds)
+        predicted_classes = classes[np.argmax(y_preds)]
+        print('predicted class')
+        print(predicted_classes)
+
+    return predicted_classes
 
 
 if __name__ == '__main__':
