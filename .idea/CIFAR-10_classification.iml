@@ -5,8 +5,12 @@
       <excludeFolder url="file://$MODULE_DIR$/.ipynb_checkpoints" />
       <excludeFolder url="file://$MODULE_DIR$/models/.ipynb_checkpoints" />
       <excludeFolder url="file://$MODULE_DIR$/models_info/.ipynb_checkpoints" />
+      <excludeFolder url="file://$MODULE_DIR$/visualize" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/images/.ipynb_checkpoints" />
+      <excludeFolder url="file://$MODULE_DIR$/loaders/.ipynb_checkpoints" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (CIFAR-10_classification)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
