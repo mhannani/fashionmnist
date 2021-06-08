@@ -1,5 +1,5 @@
-from tensorflow.keras.datasets import cifar10
-from tensorflow.keras.utils import to_categorical
+from keras.datasets import cifar10
+from keras.utils import to_categorical
 
 
 def load_cifar_10():
