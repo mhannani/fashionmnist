@@ -7,8 +7,6 @@ from models import CifarModel
 import numpy as np
 import os
 import flask
-from PIL import Image
-import datetime
 import matplotlib.pyplot as plt
 image_directory = 'assets/images/'
 # serving local files
