@@ -10,7 +10,6 @@ import flask
 import matplotlib.pyplot as plt
 image_directory = 'assets/images/'
 
-
 # serving local files
 css_directory = os.getcwd()
 stylesheets = ['app.css']
