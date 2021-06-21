@@ -10,9 +10,13 @@ from PIL import Image
 import datetime
 import matplotlib.pyplot as plt
 image_directory = 'assets/images/'
-external_stylesheets = ["https://mhannani.codes/external_stylesheets/app.css",
-                        "https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"]
-app = dash.Dash(__name__,  external_stylesheets=external_stylesheets)
+# serving local files
+css_directory = os.getcwd()
+stylesheets = ['app.css']
+static_css_route = '/assets/'
+
+
+app = dash.Dash(__name__)
 app.layout = html.Div(
     id='app',
     children=[
@@ -107,9 +111,24 @@ def prediction(img):
     return html.H3(predicted_classes)
 
 
+@app.server.route('{}<stylesheet>'.format(static_css_route))
+def serve_stylesheet(style):
+    if style not in stylesheets:
+        raise Exception(
+            '"{}" is excluded from the allowed static files'.format(
+                style
+            )
+        )
+    return flask.send_from_directory(css_directory, style)
+
+
+for stylesheet in stylesheets:
+    app.css.append_css({"external_url": "/assets/{}".format(stylesheet)})
+
+
 if __name__ == '__main__':
     # for deployment
-    app.run_server(host='0.0.0.0', port=8080, debug=False, use_reloader=False)
+    # app.run_server(host='0.0.0.0', port=8080, debug=False, use_reloader=False)
 
     # for production
-    # app.run_server(debug=True)
+    app.run_server(debug=True)
