@@ -17,6 +17,7 @@ static_css_route = '/assets/'
 
 
 app = dash.Dash(__name__)
+
 app.layout = html.Div(
     id='app',
     children=[
