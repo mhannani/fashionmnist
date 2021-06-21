@@ -28,7 +28,7 @@ app.layout = html.Div(
                         dcc.Upload(
                             id='upload-image',
                             children=html.Div([
-                                'Drag and Drop image to make prediction',
+                                'Drag and drop image to make prediction',
                             ]),
                             multiple=True
                         ),
