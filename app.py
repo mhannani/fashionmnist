@@ -56,7 +56,7 @@ app.layout = html.Div(
         ),
         html.A(
             className="github-fork-ribbon",
-            href="https://github.com/mhannani/CIFAR-10_classification",
+            href="https://github.com/mhannani/cifar-10_classification",
             title="Fork me on GitHub",
             children="Fork me on GitHub"
         )
