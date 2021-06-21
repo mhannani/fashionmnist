@@ -6,6 +6,7 @@ from loaders import load_model
 from models import CifarModel
 import numpy as np
 import os
+import flask
 from PIL import Image
 import datetime
 import matplotlib.pyplot as plt
