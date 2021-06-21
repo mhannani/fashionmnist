@@ -40,7 +40,7 @@ app.layout = html.Div(
                     html.Div(className='flex-item componentWrapper ',
                              children=[
                                  html.Div(className="header",
-                                          children=[html.Div("Input data")]
+                                          children=[html.Div("Input cifar image")]
                                           ),
                                  html.Div(id='output-image-upload')
                              ]),
