@@ -47,7 +47,7 @@ app.layout = html.Div(
                     html.Div(className='flex-item componentWrapper ',
                              children=[
                                  html.Div(className="header",
-                                          children=[html.Div("Output")]
+                                          children=[html.Div("The predicted label")]
                                           ),
                                  html.Div(id='output-prediction', className='center_vertically'),
                              ]),
