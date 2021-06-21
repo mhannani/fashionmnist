@@ -1,7 +1,6 @@
-dash==1.20.0
-dash-core-components==1.16.0
-dash-html-components==1.1.3
-dash-renderer==1.9.1
-gunicorn==20.1.0
-numpy~=1.19.5
-Keras~=2.4.3
+numpy
+matplotlib
+tensorflow
+dash
+Pillow
+gunicorn

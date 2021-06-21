@@ -1,0 +1,4 @@
+handlers:
+  - url: /assets/styles/app.css
+    static_files: /assets/styles/app.css
+    upload: /assets/styles/app.css
