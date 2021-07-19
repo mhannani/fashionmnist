@@ -6,6 +6,6 @@ Online simulation here: https://fashionmnsit.mhannani.codes/
 
 ![Drag Racing](assets/app_images/app.png)
 
-After prediction
+After prediction:
 
 ![Drag Racing](assets/app_images/app_preds.png)
