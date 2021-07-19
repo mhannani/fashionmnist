@@ -10,7 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/assets/images/.ipynb_checkpoints" />
       <excludeFolder url="file://$MODULE_DIR$/loaders/.ipynb_checkpoints" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (CIFAR-10_classification)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (base) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">

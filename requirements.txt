@@ -1,6 +1,5 @@
 numpy
 matplotlib
-tensorflow
 dash
 gunicorn
 Flask
