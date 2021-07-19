@@ -3,7 +3,6 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 from loaders import load_model
-from models import CifarModel
 import numpy as np
 import os
 import flask
@@ -44,7 +43,7 @@ app.layout = html.Div(
                     html.Div(className='flex-item componentWrapper ',
                              children=[
                                  html.Div(className="header",
-                                          children=[html.Div("Input cifar image")]
+                                          children=[html.Div("Input fashion image")]
                                           ),
                                  html.Div(id='output-image-upload')
                              ]),
@@ -60,7 +59,7 @@ app.layout = html.Div(
         ),
         html.A(
             className="github-fork-ribbon",
-            href="https://github.com/mhannani/cifar-10_classification",
+            href="https://github.com/mhannani/fashionmnist",
             title="Fork me on GitHub",
             children="Fork me on GitHub"
         )
@@ -92,7 +91,7 @@ def load_and_preprocess(image):
     return img
 
 
-model = load_model(CifarModel, 'cifar_model')
+# model = load_model(CifarModel, 'cifar_model')
 
 
 @app.callback(Output('output-prediction', 'children'),
@@ -105,10 +104,10 @@ def prediction(img):
         img = np.expand_dims(img, axis=0)
         classes = np.array(['airplane', 'automobile', 'bird', 'cat', 'deer',
                             'dog', 'frog', 'horse', 'ship', 'truck'])
-        y_preds = model.predict(img[:, :, :, :3])
-        predicted_classes = classes[np.argmax(y_preds)]
+        # y_preds = model.predict(img[:, :, :, :3])
+        # predicted_classes = classes[np.argmax(y_preds)]
 
-    return html.H3(predicted_classes)
+    # return html.H3(predicted_classes)
 
 
 @app.server.route('{}<stylesheet>'.format(static_css_route))

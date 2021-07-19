@@ -1,8 +1,8 @@
 # Dash plotly interface for image classification
 
-The ANN was trained on cifar_10 dataset with shape (None, 32, 32, 3), with None for the batch size.
+The ANN was trained on FashionMNIST dataset with shape (None, 32, 32, 3), with None for the batch size.
 
-Online simulation here: https://cifar-clf.mhannani.codes/
+Online simulation here: https://fashionmnsit.mhannani.codes/
 
 ![Drag Racing](assets/app_images/app.png)
 
