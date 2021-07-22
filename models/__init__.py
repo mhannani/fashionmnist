@@ -1,0 +1,1 @@
+from .fashionMNIST import FashionMNIST
