@@ -6,4 +6,5 @@ params = OrderedDict(
     batch_size=[100, 1000],
     shuffle=[True, False]
 )
+
 epochs = 3
