@@ -1,4 +1,6 @@
 from torch import nn
+import torch.nn.functional as F
+from params import *
 
 
 class FashionMNIST(nn.Module):
@@ -32,7 +34,28 @@ class FashionMNIST(nn.Module):
             """
 
             # conv1
+            t = self.conv1(t)
+            t = F.relu(t)
+            t = F.max_pool2d(t, kernel_size=2, stride=2)
 
+            # conv2
+            t = self.conv2(t)
+            t = F.relu(t)
+            t = F.max_pool2d(t, kernel_size=2, stride=2)
+
+            # fc1
+            t = t.reshape(-1, 12*4*4)
+            t = self.fc1(t)
+            t = F.relu(t)
+
+            # fc2
+            t = self.fc2(t)
+            t = F.relu(t)
+
+            # output
+            t = self.out(t)
+
+            return t
 
 
 
